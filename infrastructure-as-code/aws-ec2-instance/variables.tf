@@ -3,6 +3,7 @@ variable "aws_region" {
   default = "us-west-1"
 }
 
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -10,6 +11,13 @@ data "aws_ami" "ubuntu" {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
   }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
 }
 
 variable "instance_type" {
