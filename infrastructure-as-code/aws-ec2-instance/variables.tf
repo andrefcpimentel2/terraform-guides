@@ -3,10 +3,13 @@ variable "aws_region" {
   default = "us-west-1"
 }
 
-variable "ami_id" {
-  description = "ID of the AMI to provision. Default is Ubuntu 14.04 Base Image"
-  default = "ami-2e1ef954"
-}
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+  }
 
 variable "instance_type" {
   description = "type of EC2 instance to provision."
