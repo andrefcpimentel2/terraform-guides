@@ -10,6 +10,7 @@ data "aws_ami" "ubuntu" {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
   }
+}
 
 variable "instance_type" {
   description = "type of EC2 instance to provision."
